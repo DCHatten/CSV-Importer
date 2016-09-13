@@ -3,6 +3,8 @@
 
 ## Author
 
+David Hatten
+
 ## Description
 
 Create a C# console program to work with a .CSV wine list. The program should continually run until the user decides to exit (entering a certain character on the keyboard). The program should allow the following functionality:
@@ -81,4 +83,8 @@ Suggestion/Hints:
 
 ## Outside Resources Used
 
+None
+
 ## Known Problems, Issues, And/Or Errors in the Program
+
+None
