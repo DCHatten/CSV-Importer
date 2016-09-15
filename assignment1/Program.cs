@@ -29,7 +29,7 @@ namespace assignment1
                 case 5:
                     ui.Pause();
                     break;
-                default case:
+                default:
                     Console.WriteLine("Invalid Selection, Please choose from the menu below:");
                     Console.WriteLine();
                     choice = ui.GetUserInput();

@@ -8,6 +8,6 @@ namespace assignment1
 {
     class WineItemCollection
     {
-        public WineItem[] wineItems = new WineItem[50];
+        public static WineItem[] wineItems = new WineItem[3962];
     }
 }
