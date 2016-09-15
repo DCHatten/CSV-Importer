@@ -9,11 +9,12 @@ namespace assignment1
 {
     class CSVProcessor
     {
+        //Declare a private variable for the file path
         private string path = Path.Combine(Environment.CurrentDirectory + "../../../../datafiles/WineList.csv");
-
-        public bool ImportCSV(WineItem[] wineItems)
+        
+         public bool ImportCSV(WineItem[] wineItems)
         {
-            //Declare a variable for the stream reader.
+            //Declare a public variable for the stream reader.
             StreamReader streamReader = null;
             //Start a try to verify the path to the file.
             //Throw an exception if incorrect.
@@ -21,14 +22,22 @@ namespace assignment1
             {
                 //Declare a string for each line we will read in.
                 string line;
-                //Instantiate the stream reader with the file path.
-                streamReader = new StreamReader(this.path);
+                if (streamReader == null)
+                {
+                    //Instantiate the stream reader with the file path.
+                    streamReader = new StreamReader(path);
+                }
+                else
+                {
+                    UserInterface.Error();
+                    return false;
+                }
                 //Setup a counter.
                 int counter = 0;
                 //While loop for processing the data in the file
                 while ((line = streamReader.ReadLine()) != null)
                 {
-                    this.processLine(line, wineItems, counter);
+                    processLine(line, wineItems, counter);
                     counter++;
                 }
                 //All the reads are successful, return true.

@@ -10,29 +10,49 @@ namespace assignment1
     {
         static void Main(string[] args)
         {
-            UserInterface ui = new UserInterface();
-            CSVProcessor fileReader = new CSVProcessor();
-            WineItemCollection collection = new WineItemCollection();
             WineItem wine = new WineItem();
+            CSVProcessor streamReader = new CSVProcessor();
 
-            int choice = ui.GetUserInput();
+            int choice = UserInterface.GetUserInput();
             switch (choice)
             {
                 case 1:
+                    if (streamReader == null)
+                    {
+                        streamReader.ImportCSV(WineItemCollection.wineItems);
+                    }
+                    else
+                    {
+                        UserInterface.Error();
+                    }
+                    Main(args);
                     break;
                 case 2:
+                    string alloutput = "";
+
+                    foreach (WineItem wineItem in WineItemCollection.wineItems)
+                    {
+                        if (wineItem != null)
+                        {
+                            alloutput += wine.ToString() + Environment.NewLine;
+                        }
+                    }
+
+                    UserInterface.PrintList(alloutput);
+                    Main(args);
                     break;
                 case 3:
                     break;
                 case 4:
                     break;
                 case 5:
-                    ui.Pause();
+                    UserInterface.Pause();
+                    Main(args);
                     break;
                 default:
                     Console.WriteLine("Invalid Selection, Please choose from the menu below:");
                     Console.WriteLine();
-                    choice = ui.GetUserInput();
+                    choice = UserInterface.GetUserInput();
                     break;
             }
         }
