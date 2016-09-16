@@ -11,15 +11,14 @@ namespace assignment1
         static void Main(string[] args)
         {
             WineItem wine = new WineItem();
-            CSVProcessor streamReader = new CSVProcessor();
-
+            
             int choice = UserInterface.GetUserInput();
             switch (choice)
             {
                 case 1:
-                    if (streamReader == null)
+                    if (CSVProcessor.streamReader == null)
                     {
-                        streamReader.ImportCSV(WineItemCollection.wineItems);
+                        CSVProcessor.ImportCSV(WineItemCollection.wineItems);
                     }
                     else
                     {
@@ -34,7 +33,7 @@ namespace assignment1
                     {
                         if (wineItem != null)
                         {
-                            alloutput += wine.ToString() + Environment.NewLine;
+                            alloutput += wineItem.ToString() + Environment.NewLine;
                         }
                     }
 
@@ -52,7 +51,7 @@ namespace assignment1
                 default:
                     Console.WriteLine("Invalid Selection, Please choose from the menu below:");
                     Console.WriteLine();
-                    choice = UserInterface.GetUserInput();
+                    Main(args);
                     break;
             }
         }

@@ -10,7 +10,7 @@ namespace assignment1
     {
         /*Backing Fields*/
         private string _description;
-        private Int32 _id;
+        private string _id;
         private string _pack;
 
         /*Properties*/
@@ -19,7 +19,7 @@ namespace assignment1
             get { return _description; }
             set { _description = value; }
         }
-        public Int32 ID
+        public string ID
         {
             get { return _id; }
             set { _id = value; }
@@ -31,7 +31,7 @@ namespace assignment1
         }
 
         /*Constructors*/
-        public WineItem(Int32 id, string description, string pack)
+        public WineItem(string id, string description, string pack)
         {
             this._id = id;
             this._description = description;
@@ -45,7 +45,7 @@ namespace assignment1
         /*Public Methods*/
         public override string ToString()
         {
-            return this._id + " " + this._description + " " + this._pack;
+            return this.ID + "  " + this.Description + "  " + this.Pack;
         }
     }
 }

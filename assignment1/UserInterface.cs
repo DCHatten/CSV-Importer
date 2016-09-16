@@ -24,7 +24,10 @@ namespace assignment1
 
             return int.Parse(input);
         }
-
+        public static void SearchPrompt()
+        {
+            Console.WriteLine("Please enter the ID of the wine you wish to find");
+        }
         public static void Pause()
         {
             Console.WriteLine("Are you sure you wish to exit?");
