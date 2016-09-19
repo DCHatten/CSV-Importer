@@ -8,7 +8,7 @@ namespace assignment1
 {
     static class UserInterface
     {
-        public static int GetUserInput()
+        public static void GetUserInput()
         {
             printMenu();
 
@@ -22,12 +22,76 @@ namespace assignment1
                 input = Console.ReadLine();
             }
 
-            return int.Parse(input);
+            switch (int.Parse(input))
+            {
+                case 1:
+                    if (CSVProcessor.streamReader == null)
+                      {
+                          CSVProcessor.ImportCSV(WineItemCollection.wineItems);
+                      }
+                    else
+                    {
+                        Error();
+                    }
+                    GetUserInput();
+                    break;
+                case 2:
+                    string alloutput = "";
+
+                    foreach (WineItem wineItem in WineItemCollection.wineItems)
+                    {
+                        if (wineItem != null)
+                        {
+                            alloutput += wineItem.ToString() + Environment.NewLine;
+                        }
+                    }
+
+                    PrintList(alloutput);
+                    GetUserInput();
+                    break;
+                case 3:
+                    Search();
+                    GetUserInput();
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    Pause();
+                    GetUserInput();
+                    break;
+                default:
+                    Console.WriteLine("Invalid Selection, Please choose from the menu below:");
+                    Console.WriteLine();
+                    GetUserInput();
+                    break;
+            }
         }
-        public static void SearchPrompt()
+        public static void Search()
         {
             Console.WriteLine("Please enter the ID of the wine you wish to find");
+            string wineID = Console.ReadLine();
+            for (int index = 0; index == WineItemCollection.wineItems.Length - 1; index++)
+            { 
+                if (string.Compare(wineID, Convert.ToString(WineItemCollection.wineItems[index].ID), ignoreCase:true) == 0)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine(WineItemCollection.wineItems[index].ToString());
+                    Console.WriteLine();
+                    return;
+                }
+                else
+                {
+                    if (string.Compare(wineID, Convert.ToString(WineItemCollection.wineItems[index].ID), ignoreCase:true) != 0)
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("Error: Wine not found");
+                        Console.WriteLine();
+                        return;
+                    }
+                }
+            }
         }
+
         public static void Pause()
         {
             Console.WriteLine("Are you sure you wish to exit?");

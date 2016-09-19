@@ -45,7 +45,7 @@ namespace assignment1
         /*Public Methods*/
         public override string ToString()
         {
-            return this.ID + "  " + this.Description + "  " + this.Pack;
+            return this.ID + "\t" + this.Description.PadRight(63) + "\t" + this.Pack.PadLeft(15);
         }
     }
 }
