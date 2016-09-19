@@ -50,7 +50,7 @@ namespace assignment1
                     GetUserInput();
                     break;
                 case 3:
-                    Search();
+                    WineItemCollection.Search();
                     GetUserInput();
                     break;
                 case 4:
@@ -66,31 +66,7 @@ namespace assignment1
                     break;
             }
         }
-        public static void Search()
-        {
-            Console.WriteLine("Please enter the ID of the wine you wish to find");
-            string wineID = Console.ReadLine();
-            for (int index = 0; index == WineItemCollection.wineItems.Length - 1; index++)
-            { 
-                if (string.Compare(wineID, Convert.ToString(WineItemCollection.wineItems[index].ID), ignoreCase:true) == 0)
-                {
-                    Console.WriteLine();
-                    Console.WriteLine(WineItemCollection.wineItems[index].ToString());
-                    Console.WriteLine();
-                    return;
-                }
-                else
-                {
-                    if (string.Compare(wineID, Convert.ToString(WineItemCollection.wineItems[index].ID), ignoreCase:true) != 0)
-                    {
-                        Console.WriteLine();
-                        Console.WriteLine("Error: Wine not found");
-                        Console.WriteLine();
-                        return;
-                    }
-                }
-            }
-        }
+        
 
         public static void Pause()
         {
