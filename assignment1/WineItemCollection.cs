@@ -15,6 +15,7 @@ namespace assignment1
         {
             Console.WriteLine("Please enter the ID of the wine you wish to find");
             string wineID = Console.ReadLine();
+            Boolean found = false;
             for (int index = 0; index < wineItems.Length; index++)
             {
                 if (string.Compare(wineID, wineItems[index].ID, true) == 0)
@@ -22,18 +23,16 @@ namespace assignment1
                     Console.WriteLine();
                     Console.WriteLine(wineItems[index].ToString());
                     Console.WriteLine();
+                    found = true;
                     return;
                 }
-                else
+            }
+            if (!found)
                 {
-                    if (string.Compare(wineID, Convert.ToString(wineItems[index].ID), true) != 0)
-                    {
-                        Console.WriteLine();
-                        Console.WriteLine("Error: Wine not found");
-                        Console.WriteLine();
-                        return;
-                    }
-                }
+                    Console.WriteLine();
+                    Console.WriteLine("Error: Wine not found");
+                    Console.WriteLine();
+                    return;
             }
         }
 
