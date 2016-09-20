@@ -13,7 +13,7 @@ namespace assignment1
         private static string path = Path.Combine(Environment.CurrentDirectory + "../../../../datafiles/WineList.csv");
         //Declare a public variable for the stream reader.
         public static StreamReader streamReader = null;
-         public static bool ImportCSV(WineItem[] wineItems)
+         public static bool ImportCSV()
         {
             //Start a try to verify the path to the file.
             //Throw an exception if incorrect.
@@ -28,7 +28,7 @@ namespace assignment1
                 //While loop for processing the data in the file
                 while ((line = streamReader.ReadLine()) != null)
                 {
-                    processLine(line, wineItems, counter);
+                    processLine(line, counter);
                     counter++;
                 }
                 //All the reads are successful, return true.
@@ -55,7 +55,7 @@ namespace assignment1
             }
         }
         //Method for processing each line of text from the CSV file.
-        private static void processLine(string line, WineItem[] wineItems, int index)
+        private static void processLine(string line, int index)
         {
             //Declare a string array and assigne the spline line to it.
             string[] parts = line.Split(',');
@@ -64,7 +64,7 @@ namespace assignment1
             string description = parts[1];
             string pack = parts[2];
             //Use the variables to create a new Wine Item in the Wine Items array at the index point that was passed in.
-            wineItems[index] = new WineItem(id, description, pack);
+            WineItemCollection.wineItems[index] = new WineItem(id, description, pack);
         }
     }
 }

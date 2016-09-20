@@ -8,7 +8,7 @@ namespace assignment1
 {
     static class UserInterface
     {
-        public static void GetUserInput()
+        public static void GetUserInput(out int selection)
         {
             printMenu();
 
@@ -22,49 +22,7 @@ namespace assignment1
                 input = Console.ReadLine();
             }
 
-            switch (int.Parse(input))
-            {
-                case 1:
-                    if (CSVProcessor.streamReader == null)
-                      {
-                          CSVProcessor.ImportCSV(WineItemCollection.wineItems);
-                      }
-                    else
-                    {
-                        Error();
-                    }
-                    GetUserInput();
-                    break;
-                case 2:
-                    string alloutput = "";
-
-                    foreach (WineItem wineItem in WineItemCollection.wineItems)
-                    {
-                        if (wineItem != null)
-                        {
-                            alloutput += wineItem.ToString() + Environment.NewLine;
-                        }
-                    }
-
-                    PrintList(alloutput);
-                    GetUserInput();
-                    break;
-                case 3:
-                    WineItemCollection.Search();
-                    GetUserInput();
-                    break;
-                case 4:
-                    break;
-                case 5:
-                    Pause();
-                    GetUserInput();
-                    break;
-                default:
-                    Console.WriteLine("Invalid Selection, Please choose from the menu below:");
-                    Console.WriteLine();
-                    GetUserInput();
-                    break;
-            }
+            selection = int.Parse(input);
         }
         
 
@@ -82,7 +40,15 @@ namespace assignment1
                 return;
             }
         }
-
+        public static void AddItem(out string id, out string description, out string pack)
+        {
+            Console.WriteLine("Please enter the id of the wine you wish to add");
+            id = Console.ReadLine();
+            Console.WriteLine("Please enter a brief description of the wine you wish to add");
+            description = Console.ReadLine();
+            Console.WriteLine("Please enter the pack size of the wine you wish to add");
+            pack = Console.ReadLine();
+        }
         public static void PrintList(string fullList)
         {
             Console.WriteLine(fullList);

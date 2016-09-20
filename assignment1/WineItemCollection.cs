@@ -10,14 +10,14 @@ namespace assignment1
     {
         public static WineItem[] wineItems = new WineItem[3963];
         public WineItem wineItem = new WineItem();
-
-        public static void Search()
+        
+        public void Search()
         {
             Console.WriteLine("Please enter the ID of the wine you wish to find");
             string wineID = Console.ReadLine();
-            for (int index = 0; index == wineItems.Length - 1; index++)
+            for (int index = 0; index < wineItems.Length; index++)
             {
-                if (string.Compare(wineID, Convert.ToString(wineItems[index].ID), ignoreCase: true) == 0)
+                if (string.Compare(wineID, wineItems[index].ID, true) == 0)
                 {
                     Console.WriteLine();
                     Console.WriteLine(wineItems[index].ToString());
@@ -26,7 +26,7 @@ namespace assignment1
                 }
                 else
                 {
-                    if (string.Compare(wineID, Convert.ToString(wineItems[index].ID), ignoreCase: true) != 0)
+                    if (string.Compare(wineID, Convert.ToString(wineItems[index].ID), true) != 0)
                     {
                         Console.WriteLine();
                         Console.WriteLine("Error: Wine not found");
@@ -35,6 +35,12 @@ namespace assignment1
                     }
                 }
             }
+        }
+
+        public void AddWineItem(string id, string description, string pack)
+        {
+            Array.Resize<WineItem>(ref wineItems, wineItems.Length + 1);
+            wineItems[wineItems.Length - 1] = new WineItem(id, description, pack);
         }
     }
 }
